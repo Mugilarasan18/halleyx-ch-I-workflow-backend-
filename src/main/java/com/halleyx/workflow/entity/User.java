@@ -1,0 +1,23 @@
+package com.halleyx.workflow.entity;
+
+import jakarta.persistence.*;
+import lombok.Data;
+import java.util.UUID;
+
+@Entity
+@Table(name = "users")
+@Data
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
+
+    @Column(unique = true, nullable = false)
+    private String username;
+
+    @Column(nullable = false)
+    private String password; // Future-la idhai encrypt pannikalam
+
+    @Column(nullable = false)
+    private String role; // Values: "CEO", "ADMIN", "USER"
+}

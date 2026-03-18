@@ -8,28 +8,29 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "executions")
 @Data
 public class Execution {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    private UUID workflowId;
+    // ✅ RELATION WITH WORKFLOW (IMPORTANT FIX)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "workflow_id")
+    private Workflow workflow;
+
     private Integer workflowVersion;
 
-    // Status can be: "PENDING_ADMIN", "PENDING_CEO", "APPROVED", "REJECTED", "COMPLETED"
+    // Status: PENDING_ADMIN, PENDING_CEO, COMPLETED, REJECTED
     private String status = "PENDING";
 
     private UUID currentStepId;
 
-    // [NEW FIELD ADDED] - Idhai vachu dhaan frontend-la Admin-ka / CEO-ka nu filter pannuvom
     @Column(name = "current_approver_role")
     private String currentApproverRole;
 
@@ -43,6 +44,7 @@ public class Execution {
 
     private Integer retries = 0;
     private String triggeredBy;
+
     private LocalDateTime startedAt;
     private LocalDateTime endedAt;
 
@@ -53,8 +55,22 @@ public class Execution {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
+    // ✅ LOG HELPER
     public void addLog(String message) {
         if (this.logs == null) this.logs = new ArrayList<>();
-        this.logs.add(LocalDateTime.now().toString() + " - " + message);
+        this.logs.add(LocalDateTime.now() + " - " + message);
+    }
+
+    // ✅ HELPER METHOD FOR DTO
+    public String getWorkflowName() {
+        return workflow != null ? workflow.getName() : "N/A";
+    }
+
+    // ✅ OPTIONAL FIX (if you have rule logic later)
+    public String getRuleCondition() {
+        return "N/A"; // or fetch from step/rule entity if exists
+    }
+
+    public void setWorkflowId(UUID id) {
     }
 }

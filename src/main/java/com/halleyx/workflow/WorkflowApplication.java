@@ -8,7 +8,7 @@ public class WorkflowApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(WorkflowApplication.class, args);
-        System.out.println("🚀 Halleyx Workflow Engine Started Successfully!");
+        System.out.println("Halleyx Workflow Engine Started Successfully!");
     }
 
 }

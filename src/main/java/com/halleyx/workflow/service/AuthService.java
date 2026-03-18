@@ -18,7 +18,6 @@ public class AuthService {
 
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            // Normal password check (No Spring Security overhead for now to prevent breaking existing APIs)
             if (user.getPassword().equals(password)) {
                 return user;
             }
@@ -27,7 +26,6 @@ public class AuthService {
     }
 
     public User registerUser(User user) {
-        // Default role for new registrations
         if (user.getRole() == null || user.getRole().isEmpty()) {
             user.setRole("USER");
         }

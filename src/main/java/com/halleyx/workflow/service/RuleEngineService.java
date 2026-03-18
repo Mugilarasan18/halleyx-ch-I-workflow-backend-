@@ -26,7 +26,7 @@ public class RuleEngineService {
             return Boolean.TRUE.equals(result);
         } catch (Exception e) {
             System.err.println("Rule Evaluation Failed: " + e.getMessage());
-            return false; // Safely fail the rule if SpEL cannot parse it
+            return false;
         }
     }
 }

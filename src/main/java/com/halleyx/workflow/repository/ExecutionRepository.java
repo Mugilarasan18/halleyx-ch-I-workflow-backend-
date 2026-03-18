@@ -8,7 +8,6 @@ import java.util.UUID;
 public interface ExecutionRepository extends JpaRepository<Execution, UUID> {
     List<Execution> findByTriggeredByOrderByStartedAtDesc(String triggeredBy);
 
-    // [PUDHU METHOD] Status matrum Role vachu filter panna
     List<Execution> findByStatusAndCurrentApproverRole(String status, String role);
 
     List<Execution> findAllByOrderByStartedAtDesc();

@@ -16,8 +16,8 @@ public class User {
     private String username;
 
     @Column(nullable = false)
-    private String password; // Future-la idhai encrypt pannikalam
+    private String password;
 
     @Column(nullable = false)
-    private String role; // Values: "CEO", "ADMIN", "USER"
+    private String role;
 }

@@ -66,7 +66,6 @@ public class ExecutionController {
         );
     }
 
-    // 🚀🔥 FIXED API FOR CEO DASHBOARD
     @GetMapping("/all-history")
     public ResponseEntity<List<ExecutionResponseDTO>> getAllHistory() {
 
@@ -78,7 +77,6 @@ public class ExecutionController {
             dto.setId(ex.getId());
             dto.setTriggeredBy(ex.getTriggeredBy());
 
-            // ✅ MAIN FIX
             dto.setWorkflowName(
                     ex.getWorkflow() != null ? ex.getWorkflow().getName() : "N/A"
             );

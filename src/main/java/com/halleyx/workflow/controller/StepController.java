@@ -26,7 +26,6 @@ public class StepController {
         return ResponseEntity.ok(stepService.getStepsByWorkflow(workflowId));
     }
 
-    // Indha method-a dhaan ippo add pannirukkom
     @DeleteMapping("/{stepId}")
     public ResponseEntity<Void> deleteStep(@PathVariable UUID stepId) {
         stepService.deleteStep(stepId);

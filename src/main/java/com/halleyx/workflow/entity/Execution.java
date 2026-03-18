@@ -61,14 +61,12 @@ public class Execution {
         this.logs.add(LocalDateTime.now() + " - " + message);
     }
 
-    // ✅ HELPER METHOD FOR DTO
     public String getWorkflowName() {
         return workflow != null ? workflow.getName() : "N/A";
     }
 
-    // ✅ OPTIONAL FIX (if you have rule logic later)
     public String getRuleCondition() {
-        return "N/A"; // or fetch from step/rule entity if exists
+        return "N/A";
     }
 
     public void setWorkflowId(UUID id) {

@@ -65,3 +65,4 @@ npm run dev
 
 The frontend will start on your local Vite/React port (usually http://localhost:5173)📝 Usage & Design Guidelines for AdminsWhen designing a workflow via the Admin Dashboard, use the following strict conventions for the Java engine to route correctly:Admin Step Naming: Must contain the exact keyword ADMIN (e.g., ADMIN_REVIEW, VERIFY_ADMIN).CEO Step Naming: Must contain the exact keyword CEO (e.g., CEO_APPROVAL, FINAL_CEO).Rule Syntax: Follow standard SpEL or your custom evaluator syntax (e.g., #amount > 5000 or #leaveDays > 3).
 Architected and Developed by Mugil
+youtube demo  video link :https://youtu.be/EWPB5WK58ks
